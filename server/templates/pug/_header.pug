@@ -1,0 +1,15 @@
+.header
+  a.link(href='/')
+    .header_button bazaar
+  .fill
+  div
+    #login_dropdown_button.header_button login
+    .login_dropdown.hidden
+      #logout_button.button.hidden logout
+      #login_dropdown.hidden
+        p username
+        input#login_username(type='text')
+        p password
+        input#login_password(type='password')
+        #post_login.button login
+        #register_button.button register
