@@ -1,0 +1,11 @@
+.header
+  a.link(href='/')
+    .button bazaar
+  .fill
+  if isLoggedIn
+    p #{username}
+    #logout_submit.button logout
+  else
+    input#login_username(type='text' placeholder='username')
+    input#login_password(type='password' placeholder='password')
+    #login_submit.button login

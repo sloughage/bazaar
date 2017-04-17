@@ -1,0 +1,8 @@
+extends _layout
+
+append scripts
+  script(src='/js/allusers.js')
+
+block content
+  each user in users
+    p= user.username

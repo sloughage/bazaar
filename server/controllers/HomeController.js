@@ -4,7 +4,11 @@ const path = require('path')
 // const Listing = require('../models/Listing')
 
 router.get('/', (req, res) => {
-  res.sendfile(path.join(__dirname, '../views', 'home.html'))
+  res.render('home', {
+    isLoggedIn: req.session.isLoggedIn,
+    username: req.session.username,
+    cat: 'meow'
+  })
 })
 
 module.exports = router

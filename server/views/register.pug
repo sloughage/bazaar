@@ -1,0 +1,23 @@
+extends _layout
+
+append scripts
+  script(src='/js/register.js')
+
+block content
+  .cont3
+    .cont2
+      .cont1.hidden
+        p email
+        input#reg_email(type='email')
+      .cont1
+        p username
+        input#reg_username(type='text')
+      .cont1
+        p password
+        input#reg_password(type='password')
+      .cont1.hidden
+        p confirm password
+        input#reg_passconf(type='password')
+      .cont1
+        div
+        #post_register.button register

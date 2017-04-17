@@ -40,9 +40,23 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
 body {
   background-color: grey;
   color: white;
+}
+.header {
+  display: flex;
+  background-color: dimgrey;
 }
 .button {
   padding: 6px;
@@ -56,4 +70,28 @@ body {
 }
 .hidden {
   display: none;
+}
+.fill {
+  flex: 1;
+}
+.cont1 {
+  display: flex;
+  justify-content: space-between;
+}
+.cont2 {
+  width: 275px;
+}
+.cont3 {
+  display: flex;
+  justify-content: center;
+}
+.cont4 {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  margin: 20px auto;
+}
+.dropdown {
+  position: absolute;
+  width: 100px;
 }

@@ -22,12 +22,12 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
-    "mongoose": "^4.9.4"
+    "mongoose": "^4.9.4",
+    "pug": "^2.0.0-beta11"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.0",
-    "gulp-pug": "^3.3.0",
     "gulp-watch": "^4.3.11"
   }
 }
