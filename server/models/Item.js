@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ListingSchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
   user: Schema.Types.ObjectId,
   status: String,
   date: Date,
@@ -11,4 +11,4 @@ const ListingSchema = new mongoose.Schema({
   tags: [String]
 })
 
-module.exports = mongoose.model('Listing', ListingSchema)
+module.exports = mongoose.model('Item', ItemSchema)

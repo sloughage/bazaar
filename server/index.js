@@ -27,7 +27,7 @@ require('./db/db')
 
 app.use('/u', require('./controllers/UserController'))
 // app.use('/l', require('./controllers/ListingController'))
-app.use('/s', require('./controllers/SearchController'))
+// app.use('/s', require('./controllers/SearchController'))
 app.use('/', require('./controllers/HomeController'))
 
 server.listen(3000, () => {

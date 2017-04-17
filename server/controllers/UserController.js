@@ -61,10 +61,10 @@ router.post('/logout', (req, res) => {
   })
 })
 
-router.get('/allusers', (req, res) => {
+router.get('/users', (req, res) => {
   User.find()
     .then(users => {
-      res.render('allusers', {users: users})
+      res.render('users', {users: users})
     }).catch(err => {
       res.send(err)
     })
