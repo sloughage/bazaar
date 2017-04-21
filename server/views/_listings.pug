@@ -1,0 +1,24 @@
+table.flex.v.box
+  tr
+    th title
+    th creators
+    th tags
+    th price
+  each item in items
+    tr.row(data-id=item.id)
+      td
+        .flex.front
+          p= item.title
+          .plus +
+      td
+        each creator in item.creators
+          .flex.front
+            p= creator
+            .plus +
+      td
+        each tag in item.tags
+          .flex.front
+            p= tag
+            .plus +
+      td
+        p $#{item.price}

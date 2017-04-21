@@ -1,14 +1,15 @@
 const mongoose = require('mongoose')
 
-const ItemSchema = new mongoose.Schema({
-  user: Schema.Types.ObjectId,
+module.exports = mongoose.model('Item', new mongoose.Schema({
+  userId: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+  username: String,
   status: String,
+  // condition: String,
   date: Date,
-  description: String,
   title: String,
+  // series: String,
   creators: [String],
-  condition: String,
-  tags: [String]
-})
-
-module.exports = mongoose.model('Item', ItemSchema)
+  // description: String,
+  tags: [String],
+  price: Number
+}))

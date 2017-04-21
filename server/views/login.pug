@@ -1,0 +1,15 @@
+extends _layout
+
+append scripts
+  script(src='/js/login.js')
+
+block content
+  if isLoggedIn
+    p you are logged in
+  else
+    input#login_username(type='text' placeholder='username' value='bill')
+    br
+    input#login_password(type='password' placeholder='password' value='fish')
+    .flex
+      #login_submit.button login
+      .fill

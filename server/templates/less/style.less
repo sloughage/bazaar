@@ -5,57 +5,89 @@ p, div, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  background-color: grey;
-  color: white;
+  background-color: white;
+  color: black;
+}
+
+td {
+  padding: .25em;
+}
+
+.row {
+  margin: .5em 0;
+  border-top: solid black 1px;
+  &:hover, &:focus {
+    background-color: white;
+  }
+}
+
+.indent {
+  margin: 0 0 0 .5em;
 }
 
 .header {
   display: flex;
-  background-color: dimgrey;
+  background-color: lightgrey;
+}
+
+.spaceh {
+  width: .5em;
 }
 
 .button {
-  padding: 6px;
+  padding: .25em;
   background-color: darkblue;
   color: white;
+  text-decoration: none;
+  &:hover, &:focus {
+    background-color: blue;
+    cursor: pointer;
+  }
 }
 
-.button:hover, .button:focus {
-  background-color: blue;
-  cursor: pointer;
+.plus, .minus {
+  background-color: darkblue;
+  color: white;
+  font-weight: bold;
+  width: 1em;
+  display: flex;
+  justify-content: center;
+  &:hover, &:focus {
+    background-color: blue;
+    cursor: pointer;
+  }
 }
 
-.hidden {
-  display: none;
+.flex {
+  display: flex;
 }
 
 .fill {
   flex: 1;
 }
 
-.cont1 {
-  display: flex;
-  justify-content: space-between;
+.txtbox {
+  width: 10em;
 }
 
-.cont2 {
-  width: 275px;
+.numbox {
+  width: 5em;
 }
 
-.cont3 {
-  display: flex;
-  justify-content: center;
+.v {
+  flex-direction: column;
 }
 
-.cont4 {
-  display: flex;
-  justify-content: space-between;
-  width: 80px;
-  margin: 20px auto;
+.front {
+  justify-content: flex-start;
 }
 
-.dropdown {
-  position: absolute;
-  // right: 0;
-  width: 100px;
+.box {
+  background-color: lightgrey;
+  margin: .5em;
+  padding: .5em;
+}
+
+.hidden {
+  display: none;
 }

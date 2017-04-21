@@ -1,0 +1,52 @@
+extends _layout
+
+append scripts
+  script(src='/js/item.js')
+
+block content
+  #content
+    p
+      a(href='/s?title=' + item.title)= item.title
+    .flex
+      each creator in item.creators
+        a(href='/s?creator=' + creator)= creator
+        .spaceh
+    .flex
+      each tag in item.tags
+        a(href='/s?tag=' + tag)= tag
+        .spaceh
+    p seller: #{item.username}
+    p status: #{item.status}
+    p listed on #{item.date}
+    p $#{item.price}
+
+  - if (isLoggedIn && userId === item.userId)
+
+    .flex.front
+      #show_edit.button edit
+
+    #edit.hidden
+
+      p title
+      input#title.txtbox(type='text' value=item.title)
+
+      .flex.front
+        p creators
+        #add_creator.plus +
+      #creator_box.flex.v
+        each creator in item.creators
+          input.creator.txtbox(type='text' value=creator)
+
+      .flex.front
+        p tags
+        #add_tag.plus +
+      #tag_box.flex.v
+        each tag in item.tags
+          input.tag.txtbox(type='text' value=tag)
+
+      p price
+      input#price.txtbox(type='text' value=item.price)
+
+      .flex.front
+        #edit_submit.button save
+        #delete_submit.button delete

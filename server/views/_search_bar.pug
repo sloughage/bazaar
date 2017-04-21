@@ -1,0 +1,18 @@
+.flex.v.box
+  input#search.txtbox(type='text' placeholder='search')
+
+  p title
+  #search_title.flex.v.indent
+  p creators
+  #search_creators.flex.v.indent
+  p tags
+  #search_tags.flex.v.indent
+  .flex
+    .flex.v
+      p min
+      input#min_price.numbox(type='text')
+    .flex.v
+      p max
+      input#max_price.numbox(type='text')
+  .flex.front
+    #search_submit.button search

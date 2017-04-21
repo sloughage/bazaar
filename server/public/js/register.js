@@ -1,5 +1,3 @@
-console.log('connected to register')
-
 $('#post_register').on('click', e => {
   const username = $('#reg_username').val()
   const password = $('#reg_password').val()

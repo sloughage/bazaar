@@ -4,5 +4,10 @@ append scripts
   script(src='/js/search.js')
 
 block content
-  p content
-
+  .flex
+    .flex.v
+      include _search_bar
+      .fill
+    .flex.v.fill
+      include _listings
+      .fill

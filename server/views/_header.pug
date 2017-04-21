@@ -1,11 +1,9 @@
 .header
-  a.link(href='/')
-    .button bazaar
+  a.button(href='/') bazaar
   .fill
   if isLoggedIn
-    p #{username}
-    #logout_submit.button logout
+    a.button(href='/i/new') new
+    a.button(href='#') cart
+    #logout.button logout
   else
-    input#login_username(type='text' placeholder='username')
-    input#login_password(type='password' placeholder='password')
-    #login_submit.button login
+    a.button(href='/u/login') login

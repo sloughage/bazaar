@@ -25,10 +25,18 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 require('./db/db')
 
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+  next()
+})
+
 app.use('/u', require('./controllers/UserController'))
-// app.use('/l', require('./controllers/ListingController'))
-// app.use('/s', require('./controllers/SearchController'))
-app.use('/', require('./controllers/HomeController'))
+app.use('/i', require('./controllers/ItemController'))
+app.use('/s', require('./controllers/SearchController'))
+
+app.get('/', (req, res) => {
+  res.redirect('/s?')
+})
 
 server.listen(3000, () => {
   console.log('server is listening on port 3000')
