@@ -1,18 +1,23 @@
 $('.plus').on('click', e => {
-  const td = $(e.target).parent().parent()
-  const th = td.closest('table').find('th').eq(td.index()).text()
-  if (th === 'title') {
-    $('#search_title').empty()
+  let plus = $(e.target)
+  let text = plus.prev().text()
+  let td = plus.parent().parent()
+  let th = td.closest('table').find('th').eq(td.index()).text()
+  let children = $('.' + th).get().map(x => $(x).text())
+  if (!children.includes(text)) {
+    if (th === 'title') $('#search_title').empty()
+    let cont = $('#search_' + th)
+    cont.append(
+      '<div class="flex"><p class="' + th + '">' +
+      text +
+      '</p><div class="minus">-</div></div>'
+    )
   }
-  $('#search_' + th).append(
-    '<div class="flex"><p class="' + th + '">' +
-    $(e.target).prev().text() +
-    '</p><div class="minus">-</div></div>'
-  )
 })
 
 $('body').on('click', '.minus', e => {
-  $(e.target).parent().remove()
+  let minus = $(e.target)
+  minus.parent().remove()
 })
 
 $('.row').on('click', function (e) {
@@ -23,17 +28,15 @@ $('.row').on('click', function (e) {
 
 $('#search_submit').on('click', e => {
   let rstr = ''
-  const mkstr = x => $(x).get().map(y => $(y).text()).join(',')
-  const titles = mkstr('.title')
-  if (titles !== '') rstr += 'title=' + titles + '&'
-  const creators = mkstr('.creators')
-  if (creators !== '') rstr += 'creator=' + creators + '&'
-  const tags = mkstr('.tags')
-  if (tags !== '') rstr += 'tag=' + tags + '&'
-  const min_price = $('#min_price').val().trim()
+  let title = encodeURIComponent($('.title').first().text())
+  if (title !== '') rstr += 'title=' + title + '&'
+  let creators = $('.creators').get().map(x => encodeURIComponent($(x).text()))
+  for (let c of creators) {rstr += 'creator=' + c + '&'}
+  let tags = $('.tags').get().map(x => encodeURIComponent($(x).text()))
+  for (let t of tags) {rstr += 'tag=' + t + '&'}
+  let min_price = encodeURIComponent($('#min_price').val())
   if (min_price !== '') rstr += 'min=' + min_price + '&'
-  const max_price = $('#max_price').val().trim()
+  let max_price = encodeURIComponent($('#max_price').val())
   if (max_price !== '') rstr += 'max=' + max_price + '&'
-  // console.log('/s?' + rstr.slice(0, -1))
-  window.location.href = '/s?' + rstr.slice(0, -1)
+  window.location.href = '/s/?' + rstr.slice(0, -1)
 })

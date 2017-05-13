@@ -1,12 +1,23 @@
 .flex.v.box
   input#search.txtbox(type='text' placeholder='search')
-
   p title
   #search_title.flex.v.indent
+    if query.title
+      .flex
+        p.title= query.title
+        .minus -
   p creators
   #search_creators.flex.v.indent
+    each creator in query.creator
+      .flex
+        p.creator= creator
+        .minus -
   p tags
   #search_tags.flex.v.indent
+    each tag in query.tag
+      .flex
+        p.tag= tag
+        .minus -
   .flex
     .flex.v
       p min

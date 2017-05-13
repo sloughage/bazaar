@@ -35,7 +35,7 @@ app.use('/i', require('./controllers/ItemController'))
 app.use('/s', require('./controllers/SearchController'))
 
 app.get('/', (req, res) => {
-  res.redirect('/s?')
+  res.redirect('/s/?')
 })
 
 server.listen(3000, () => {

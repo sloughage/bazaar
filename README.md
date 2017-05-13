@@ -12,7 +12,6 @@
 * transition frontend to marko (figure out how to mesh with jquery)
 
 ## complete:
-
 * server running
 * user authentication
 * convert queries to url
