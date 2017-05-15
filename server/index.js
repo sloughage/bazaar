@@ -33,6 +33,7 @@ app.use((req, res, next) => {
 app.use('/u', require('./controllers/UserController'))
 app.use('/i', require('./controllers/ItemController'))
 app.use('/s', require('./controllers/SearchController'))
+app.use('/d', require('./controllers/DataController'))
 
 app.get('/', (req, res) => {
   res.redirect('/s/?')

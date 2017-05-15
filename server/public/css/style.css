@@ -57,6 +57,21 @@ body {
 td {
   padding: .25em;
 }
+#wordbox {
+  width: 10em;
+  border: solid black 1px;
+  position: absolute;
+}
+.word {
+  background-color: white;
+  display: flex;
+}
+.word:hover {
+  background-color: lightgrey;
+}
+.word2 {
+  color: grey;
+}
 .main {
   padding: .25em;
 }
