@@ -22,6 +22,12 @@
         .flex
           p.tags= tag
           .minus -
+  p username
+  #search_username.flex.v.indent
+    if query.username
+      .flex
+        p.title= query.username
+        .minus -
   .flex
     .flex.v
       p min

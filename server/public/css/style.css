@@ -91,7 +91,7 @@ td {
   background-color: lightgrey;
 }
 .spaceh {
-  width: .5em;
+  min-width: .5em;
 }
 .button {
   padding: .25em;

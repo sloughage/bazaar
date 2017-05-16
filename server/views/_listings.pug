@@ -1,9 +1,25 @@
 table.flex.v.box
   tr
-    th title
-    th creator
-    th tag
-    th price
+    th
+      .fill.spaceh
+      span title
+      .fill.spaceh
+    th
+      .fill.spaceh
+      span creator
+      .fill.spaceh
+    th
+      .fill.spaceh
+      span tag
+      .fill.spaceh
+    th
+      .fill.spaceh
+      span username
+      .fill.spaceh
+    th
+      .fill.spaceh
+      span price
+      .fill.spaceh
   each item in items
     tr.row(data-id=item.id)
       td
@@ -20,5 +36,9 @@ table.flex.v.box
           .flex.front
             p= tag
             .plus +
+      td
+        .flex.front
+          p= item.username
+          .plus +
       td
         p $#{item.price}

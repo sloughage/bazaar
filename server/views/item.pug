@@ -6,16 +6,18 @@ append scripts
 block content
   #content
     p
-      a(href='/s?title=' + item.title)= item.title
+      a(href='/s/?title=' + encodeURIComponent(item.title))= item.title
     .flex
       each creator in item.creators
-        a(href='/s?creator=' + creator)= creator
+        a(href='/s/?creator=' + encodeURIComponent(creator))= creator
         .spaceh
     .flex
       each tag in item.tags
-        a(href='/s?tag=' + tag)= tag
+        a(href='/s/?tag=' + encodeURIComponent(tag))= tag
         .spaceh
-    p seller: #{item.username}
+    p
+      | seller:#{' '}
+      a(href='/s/?username=' + encodeURIComponent(item.username))= item.username
     p status: #{item.status}
     p listed on #{item.date}
     p $#{item.price}

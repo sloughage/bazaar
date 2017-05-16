@@ -78,4 +78,16 @@ router.get('/users', (req, res) => {
   })
 })
 
+// router.get('/:username', (req, res) => {
+//   User.findOne({username: req.params.username})
+//   .then(user => {
+//     res.render('user', {
+//       isLoggedIn: req.session.isLoggedIn,
+//       user: user
+//     })
+//   })
+// }).catch(err => {
+//   res.send(err)
+// })
+
 module.exports = router

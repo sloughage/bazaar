@@ -3,16 +3,20 @@ const router = express.Router()
 const Item = require('../models/Item')
 
 router.get('/', (req, res) => {
+  console.log(req.query)
   let query = {}
   if (typeof req.query.title === 'string') query.title = req.query.title
   if (typeof req.query.creator === 'string') query.creator = [req.query.creator]
   else if (typeof req.query.creator === 'object') query.creator = req.query.creator
   if (typeof req.query.tag === 'string') query.tag = [req.query.tag]
   else if (typeof req.query.tag === 'object') query.tag = req.query.tag
+  if (typeof req.query.username === 'string') query.username = req.query.username
   if (!isNaN(req.query.min)) query.min = req.query.min
   if (!isNaN(req.query.max)) query.max = req.query.max
   let rarr = []
-  if (query.title) rarr.push({title: query.title})
+  if (query.title) {
+    rarr.push({title: query.title})
+  }
   if (query.creator) {
     for (let c of query.creator) {
       rarr.push({creators: c})
@@ -23,6 +27,9 @@ router.get('/', (req, res) => {
       rarr.push({tags: t})
     }
   }
+  if (query.username) {
+    rarr.push({username: query.username})
+  }
   if (query.min) {
     rarr.push({price: {$gte: +query.min}})
   }
@@ -32,7 +39,7 @@ router.get('/', (req, res) => {
   let robj
   if (rarr.length > 0) robj = {$and: rarr}
   else robj = {}
-  Item.find(robj)
+  Item.find(robj).sort({date: -1})
   .then(items => {
     res.render('search', {
       isLoggedIn: req.session.isLoggedIn,

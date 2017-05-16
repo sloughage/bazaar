@@ -6,8 +6,9 @@ $('.plus').on('click', e => {
   let th = td.closest('table').find('th').eq(td.index()).text()
   let children = $('.' + th).get().map(x => $(x).text())
   if (!children.includes(text)) {
-    if (th === 'title') $('#search_title').empty()
-    let cont = $('#search_' + th)
+    let str = '#search_' + th
+    if (th === 'title' || th === 'username') $(str).empty()
+    let cont = $(str)
     cont.append(
       '<div class="flex"><p class="' + th + '">' +
       text +
@@ -52,6 +53,8 @@ $('#search_submit').on('click', e => {
   for (let c of creator) {rstr += 'creator=' + c + '&'}
   let tag = $('.tag').get().map(x => encodeURIComponent($(x).text()))
   for (let t of tag) {rstr += 'tag=' + t + '&'}
+  let username = encodeURIComponent($('.username').first().text())
+  if (username !== '') rstr += 'username=' + username + '&'
   let min_price = encodeURIComponent($('#min_price').val())
   if (min_price !== '') rstr += 'min=' + min_price + '&'
   let max_price = encodeURIComponent($('#max_price').val())
