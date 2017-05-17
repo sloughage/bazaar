@@ -47,8 +47,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+input {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1em;
 }
 body {
   background-color: white;
@@ -58,16 +60,17 @@ td {
   padding: .25em;
 }
 #wordbox {
-  width: 10em;
   border: solid black 1px;
   position: absolute;
 }
 .word {
   background-color: white;
   display: flex;
+  width: 10em;
 }
 .word:hover {
   background-color: lightgrey;
+  cursor: pointer;
 }
 .word2 {
   color: grey;
@@ -92,6 +95,9 @@ td {
 }
 .spaceh {
   min-width: .5em;
+}
+.spacev {
+  min-height: .5em;
 }
 .button {
   padding: .25em;
@@ -129,8 +135,11 @@ td {
 .txtbox {
   width: 10em;
 }
+.spread {
+  justify-content: space-between;
+}
 .numbox {
-  width: 5em;
+  width: 4.5em;
 }
 .v {
   flex-direction: column;

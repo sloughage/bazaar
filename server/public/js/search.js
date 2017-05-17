@@ -42,6 +42,10 @@ $('body').on('click', '.word', e => {
     word +
     '</p><div class="minus">-</div></div>'
   )
+  $('#search').val('')
+  $('#wordbox').addClass('hidden')
+  $('#wordbox').empty()
+  $('#search').focus()
 })
 
 // click on search submit
@@ -62,31 +66,58 @@ $('#search_submit').on('click', e => {
   window.location.href = '/s/?' + rstr.slice(0, -1)
 })
 
+// clear search
+// $('#search').on('search', () => {
+//   let wordbox = $('#wordbox')
+//   wordbox.addClass('hidden')
+//   wordbox.empty()
+// })
+
+// hide options if search loses focus
+$(document).on('click', e => {
+  if (
+    $(e.target).closest('#wordbox').length === 0 &&
+    $(e.target).closest('#search').length === 0
+  ) {
+    $('#wordbox').addClass('hidden')
+  }
+})
+
+$('#search').on('focusin', () => {
+  let wordbox = $('#wordbox')
+  if (wordbox.children().length > 0) {
+    wordbox.removeClass('hidden')
+  }
+})
+
 // when typing in search
 $('#search').on('keyup', () => {
   let wordbox = $('#wordbox')
-  wordbox.empty()
   wordbox.addClass('hidden')
-  $.ajax({
-    url: '/d',
-    type: 'post',
-    data: {str: $('#search').val()},
-    success: result => {
-      for (let pair of result) {
-        wordbox.append(
-          '<div class="word"><div class="word1">' +
-          pair.word +
-          '</div><div class="fill"></div><div class="word2">' +
-          pair.type +
-          '</div></div>'
-        )
+  wordbox.empty()
+  let str = $('#search').val()
+  if (str !== '') {
+    $.ajax({
+      url: '/d',
+      type: 'post',
+      data: {str: str},
+      success: result => {
+        for (let pair of result) {
+          wordbox.append(
+            '<div class="word"><div class="word1">' +
+            pair.word +
+            '</div><div class="fill"></div><div class="word2">' +
+            pair.type +
+            '</div></div>'
+          )
+        }
+        if (result.length > 0) {
+          wordbox.removeClass('hidden')
+        }
+      },
+      error: err => {
+        console.log(err)
       }
-      if (result.length > 0) {
-        wordbox.removeClass('hidden')
-      }
-    },
-    error: err => {
-      console.log(err)
-    }
-  })
+    })
+  }
 })

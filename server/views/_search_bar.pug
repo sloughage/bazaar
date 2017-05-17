@@ -1,5 +1,5 @@
 .flex.v.box
-  input#search.txtbox(type='search' placeholder='search')
+  input#search.txtbox(type='text' placeholder='search')
   div
     #wordbox.hidden
   p title
@@ -28,7 +28,7 @@
       .flex
         p.title= query.username
         .minus -
-  .flex
+  .flex.spread
     .flex.v
       p min
       input#min_price.numbox(type='text' value= query.min)
