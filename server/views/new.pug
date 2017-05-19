@@ -4,22 +4,28 @@ append scripts
   script(src='/js/new.js')
 
 block content
-  if isLoggedIn
-    p title
-    input#title.txtbox(type='text')
-    .flex.front
-      p creators
-      #add_creator.plus +
-    #creator_box.flex.v
-      input.creator.txtbox(type='text')
-    .flex.front
-      p tags
-      #add_tag.plus +
-    #tag_box.flex.v
-      input.tag.txtbox(type='text')
-    p price
-    input#price.txtbox(type='text')
-    .flex.front
-      #new_submit.button submit
-  else
-    p access denied, log in
+  .pad
+    if isLoggedIn
+      p title
+      input#title.txtbox(type='text')
+      .spacev
+
+      .flex.front
+        p creators
+        #add_creator.plus +
+      #creator_box.flex.v
+        input.creator.txtbox(type='text')
+      .spacev
+      .flex.front
+        p tags
+        #add_tag.plus +
+      #tag_box.flex.v
+        input.tag.txtbox(type='text')
+      .spacev
+      p price
+      input#price.txtbox(type='text')
+      .spacev
+      .flex.front
+        #new_submit.button submit
+    else
+      p access denied, log in

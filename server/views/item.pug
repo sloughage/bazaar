@@ -22,8 +22,8 @@ block content
     p listed on #{item.date}
     p $#{item.price}
 
-  - if (isLoggedIn && userId === item.userId)
-
+  - if (isLoggedIn && username === item.username)
+    p= userId
     .flex.front
       #show_edit.button edit
 

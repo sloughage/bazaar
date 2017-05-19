@@ -2,32 +2,33 @@
   input#search.txtbox(type='text' placeholder='search')
   div
     #wordbox.hidden
+  .spacev
   p title
   #search_title.flex.v.indent
     if query.title
       .flex
-        p.title= query.title
-        .minus -
+        p.title.searchable= query.title
+        //- .minus -
   p creator
   #search_creator.flex.v.indent
     if query.creator
       each creator in query.creator
         .flex
-          p.creator= creator
-          .minus -
+          p.creator.searchable= creator
+          //- .minus -
   p tag
   #search_tag.flex.v.indent
     if query.tag
       each tag in query.tag
         .flex
-          p.tags= tag
-          .minus -
+          p.tag.searchable= tag
+          //- .minus -
   p username
   #search_username.flex.v.indent
     if query.username
       .flex
-        p.title= query.username
-        .minus -
+        p.username.searchable= query.username
+        //- .minus -
   .flex.spread
     .flex.v
       p min
@@ -35,5 +36,6 @@
     .flex.v
       p max
       input#max_price.numbox(type='text' value= query.max)
+  .spacev
   .flex.front
     #search_submit.button search

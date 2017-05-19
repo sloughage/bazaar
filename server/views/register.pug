@@ -4,15 +4,18 @@ append scripts
   script(src='/js/register.js')
 
 block content
-  //- .cont1
-  //-   p email
-  //-   input#reg_email(type='email')
-  p username
-  input#reg_username(type='text')
-  p password
-  input#reg_password(type='password')
-  //- p confirm password
-  //- input#reg_passconf(type='password')
-  .flex
-    #post_register.button register
-    .fill
+  .pad
+    //- .cont1
+    //-   p email
+    //-   input#reg_email(type='email')
+    p username
+    input#reg_username(type='text')
+    .spacev
+    p password
+    input#reg_password(type='password')
+    //- p confirm password
+    //- input#reg_passconf(type='password')
+    .spacev
+    .flex
+      #post_register.button register
+      .fill

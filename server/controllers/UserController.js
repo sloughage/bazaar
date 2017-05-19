@@ -22,7 +22,7 @@ router.post('/register', (req, res) => {
     })
   }).then(user => {
     req.session.username = user.username
-    req.session.userId = user.id
+    req.session.userId = user._id
     req.session.isLoggedIn = true
     res.send('registered')
   }).catch(err => {

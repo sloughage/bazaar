@@ -1,26 +1,35 @@
+function addToSearch (word, type) {
+  let children = $('.' + type).get().map(x => $(x).text())
+  if (!children.includes(word)) {
+    let str = '#search_' + type
+    if (type === 'title' || type === 'username') $(str).empty()
+    let cont = $(str)
+    cont.append(
+      '<div class="flex">' +
+      '<p class="searchable ' + type + '">' + word + '</p>' +
+      // '<div class="minus">-</div>' +
+      '</div>'
+    )
+  }
+}
+
 // click on plus
 $('.plus').on('click', e => {
   let plus = $(e.target)
   let text = plus.prev().text()
   let td = plus.parent().parent()
   let th = td.closest('table').find('th').eq(td.index()).text()
-  let children = $('.' + th).get().map(x => $(x).text())
-  if (!children.includes(text)) {
-    let str = '#search_' + th
-    if (th === 'title' || th === 'username') $(str).empty()
-    let cont = $(str)
-    cont.append(
-      '<div class="flex"><p class="' + th + '">' +
-      text +
-      '</p><div class="minus">-</div></div>'
-    )
-  }
+  addToSearch(text, th)
 })
 
 // click on minus
 $('body').on('click', '.minus', e => {
   let minus = $(e.target)
   minus.parent().remove()
+})
+
+$('body').on('click', '.searchable', e => {
+  $(e.target).parent().remove()
 })
 
 // click on row
@@ -35,13 +44,7 @@ $('body').on('click', '.word', e => {
   let wordbox = $(e.target).parent()
   let word = wordbox.children().first().text()
   let type = wordbox.children().last().text()
-  let cont = $('#search_' + type)
-  if (type === 'title') cont.empty()
-  cont.append(
-    '<div class="flex"><p class="' + type + '">' +
-    word +
-    '</p><div class="minus">-</div></div>'
-  )
+  addToSearch(word, type)
   $('#search').val('')
   $('#wordbox').addClass('hidden')
   $('#wordbox').empty()
@@ -107,7 +110,7 @@ $('#search').on('keyup', () => {
             '<div class="word"><div class="word1">' +
             pair.word +
             '</div><div class="fill"></div><div class="word2">' +
-            pair.type +
+            pair.cat +
             '</div></div>'
           )
         }

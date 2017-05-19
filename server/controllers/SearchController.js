@@ -3,7 +3,6 @@ const router = express.Router()
 const Item = require('../models/Item')
 
 router.get('/', (req, res) => {
-  console.log(req.query)
   let query = {}
   if (typeof req.query.title === 'string') query.title = req.query.title
   if (typeof req.query.creator === 'string') query.creator = [req.query.creator]

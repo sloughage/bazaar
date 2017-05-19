@@ -1,9 +1,10 @@
 .header
-  a.button(href='/') bazaar
+  a.button(href='/') home
   .fill
   if isLoggedIn
     a.button(href='/i/new') new
-    a.button(href='#') cart
+    //- a.button(href='#') cart
     #logout.button logout
   else
+    a.button(href='/u/register') register
     a.button(href='/u/login') login

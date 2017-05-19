@@ -1,6 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const Item = require('../models/Item')
+let express = require('express')
+let router = express.Router()
+let Item = require('../models/Item')
+let add = require('./DataController').add
 
 router.get('/new', (req, res) => {
   res.render('new', {
@@ -20,6 +21,14 @@ router.post('/new', (req, res) => {
       tags: req.body.tags.filter(x => x !== ''),
       price: Math.round(+req.body.price * 100) / 100
     }).then(item => {
+      add(item.username, 'username')
+      add(item.title, 'title')
+      for (let c of item.creators) {
+        add(c, 'creator')
+      }
+      for (let t of item.tags) {
+        add(t, 'tag')
+      }
       res.send('/i/' + item.id)
     }).catch(err => {
       res.send(err)
@@ -34,7 +43,7 @@ router.get('/:id', (req, res) => {
   .then(item => {
     res.render('item', {
       isLoggedIn: req.session.isLoggedIn,
-      userId: req.session.userId,
+      username: req.session.username,
       item: item
     })
   }).catch(err => {

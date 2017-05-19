@@ -1,44 +1,47 @@
-table.flex.v.box
-  tr
-    th
-      .fill.spaceh
-      span title
-      .fill.spaceh
-    th
-      .fill.spaceh
-      span creator
-      .fill.spaceh
-    th
-      .fill.spaceh
-      span tag
-      .fill.spaceh
-    th
-      .fill.spaceh
-      span username
-      .fill.spaceh
-    th
-      .fill.spaceh
-      span price
-      .fill.spaceh
-  each item in items
-    tr.row(data-id=item.id)
-      td
-        .flex.front
-          p= item.title
-          .plus +
-      td
-        each creator in item.creators
+if items.length === 0
+  .box no results found
+else
+  table.flex.v.box
+    tr
+      th
+        .fill.spaceh
+        span title
+        .fill.spaceh
+      th
+        .fill.spaceh
+        span creator
+        .fill.spaceh
+      th
+        .fill.spaceh
+        span tag
+        .fill.spaceh
+      th
+        .fill.spaceh
+        span username
+        .fill.spaceh
+      th
+        .fill.spaceh
+        span price
+        .fill.spaceh
+    each item in items
+      tr.row(data-id=item.id)
+        td
           .flex.front
-            p= creator
-            .plus +
-      td
-        each tag in item.tags
+            p= item.title
+            //- .plus +
+        td
+          each creator in item.creators
+            .flex.front
+              p= creator
+              //- .plus +
+        td
+          each tag in item.tags
+            .flex.front
+              p= tag
+              //- .plus +
+        td
           .flex.front
-            p= tag
-            .plus +
-      td
-        .flex.front
-          p= item.username
-          .plus +
-      td
-        p $#{item.price}
+            p= item.username
+            //- .plus +
+        td
+          p $#{item.price}

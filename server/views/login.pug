@@ -4,12 +4,15 @@ append scripts
   script(src='/js/login.js')
 
 block content
-  if isLoggedIn
-    p you are logged in
-  else
-    input#login_username(type='text' placeholder='username' value='bill')
-    br
-    input#login_password(type='password' placeholder='password' value='fish')
-    .flex
-      #login_submit.button login
-      .fill
+  .pad
+    if isLoggedIn
+      p you are logged in
+    else
+      input#login_username(type='text' placeholder='username')
+      br
+      .spacev
+      input#login_password(type='password' placeholder='password')
+      .spacev
+      .flex
+        #login_submit.button login
+        .fill
